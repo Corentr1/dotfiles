@@ -49,3 +49,6 @@
 
 [pull]
   rebase = false
+[user]
+	email = corentin.peyresblanques@gmail.com
+	name = Corentin Peyresblanques
