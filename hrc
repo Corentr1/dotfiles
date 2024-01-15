@@ -1,0 +1,38 @@
+[1mdiff --git a/zshrc b/zshrc[m
+[1mindex 72d7b0d..0cebe11 100644[m
+[1m--- a/zshrc[m
+[1m+++ b/zshrc[m
+[36m@@ -4,7 +4,7 @@[m [mZSH=$HOME/.oh-my-zsh[m
+ ZSH_THEME="robbyrussell"[m
+ [m
+ # Useful oh-my-zsh plugins for Le Wagon bootcamps[m
+[31m-plugins=(git gitfast last-working-dir common-aliases zsh-syntax-highlighting history-substring-search pyenv ssh-agent)[m
+[32m+[m[32mplugins=(git gitfast last-working-dir common-aliases zsh-syntax-highlighting history-substring-search)[m
+ [m
+ # (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/docs/Analytics.md[m
+ export HOMEBREW_NO_ANALYTICS=1[m
+[36m@@ -15,6 +15,7 @@[m [mZSH_DISABLE_COMPFIX=true[m
+ # Actually load Oh-My-Zsh[m
+ source "${ZSH}/oh-my-zsh.sh"[m
+ unalias rm # No interactive rm by default (brought by plugins/common-aliases)[m
+[32m+[m[32munalias lt # we need `lt` for https://github.com/localtunnel/localtunnel[m
+ [m
+ # Load rbenv if installed (to manage your Ruby versions)[m
+ export PATH="${HOME}/.rbenv/bin:${PATH}" # Needed for Linux/WSL[m
+[36m@@ -22,7 +23,7 @@[m [mtype -a rbenv > /dev/null && eval "$(rbenv init -)"[m
+ [m
+ # Load pyenv (to manage your Python versions)[m
+ export PYENV_VIRTUALENV_DISABLE_PROMPT=1[m
+[31m-type -a pyenv > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)" && RPROMPT+='[🐍 $(pyenv_prompt_info)]'[m
+[32m+[m[32mtype -a pyenv > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init - 2> /dev/null)" && RPROMPT+='[🐍 $(pyenv version-name)]'[m
+ [m
+ # Load nvm (to manage your node versions)[m
+ export NVM_DIR="$HOME/.nvm"[m
+[36m@@ -66,4 +67,6 @@[m [mexport LC_ALL=en_US.UTF-8[m
+ [m
+ export BUNDLER_EDITOR=code[m
+ export EDITOR=code[m
+[31m-sudo /etc/init.d/postgresql start[m
+[32m+[m
+[32m+[m[32m# Set ipdb as the default Python debugger[m
+[32m+[m[32mexport PYTHONBREAKPOINT=ipdb.set_trace[m
